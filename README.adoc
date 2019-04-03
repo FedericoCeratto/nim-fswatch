@@ -5,8 +5,9 @@ Cross-platform filesystem event monitor for Nim.
 Wraps the https://github.com/emcrisostomo/fswatch[libfswatch] library.
 
 image:https://img.shields.io/badge/status-alpha-orange.svg[badge]
+image:https://img.shields.io/badge/Nim%20version-0.19.0+-green.svg[Nim version]
+image:https://img.shields.io/github/tag/FedericoCeratto/nim-fswatch.svg[tags]
 image:https://img.shields.io/badge/License-GPL%20v3-blue.svg[License]
-image:https://img.shields.io/badge/Nim%20version-0.19.0-green.svg[Nim version]
 
 ### Usage
 
