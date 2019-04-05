@@ -22,13 +22,10 @@ const libfswatch_fn* = "libfswatch.so(.11)"
 type FSW_STATUS* = cint
 
 ##  Opaque type representing a monitoring session.
-type
-  FSW_SESSION* {.bycopy.} = object
-
+type FSW_SESSION* {.bycopy.} = object
 
 ##  Handle to a monitoring session.
-type
-  FSW_HANDLE* = ptr FSW_SESSION
+type FSW_HANDLE* = ptr FSW_SESSION
 
 ##
 ##  Backend-agnostic change flags.
@@ -74,8 +71,7 @@ type
     Overflow = (1 shl 13)          # The event queue has overflowed.
 
 
-var FSW_ALL_EVENT_FLAGS* {.importc: "FSW_ALL_EVENT_FLAGS", dynlib: libfswatch_fn.}: array[
-    15, fsw_event_flag]
+var FSW_ALL_EVENT_FLAGS* {.importc: "FSW_ALL_EVENT_FLAGS", dynlib: libfswatch_fn.}: array[15, fsw_event_flag]
 
 ##
 ##  Get event flag by name.
@@ -142,17 +138,13 @@ type
   fsw_filter_type* = enum
     filter_include, filter_exclude
 
-
-type
   fsw_cmonitor_filter* {.bycopy.} = object
     text*: cstring
     `type`*: fsw_filter_type
     case_sensitive*: bool
     extended*: bool
 
-
-##  Event type filter.
-type
+  ##  Event type filter.
   fsw_event_type_filter* {.bycopy.} = object
     flag*: fsw_event_flag
 
