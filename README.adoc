@@ -19,9 +19,19 @@ nimble install fswatch
 
 [source,nim]
 ----
-import fswatch
+import times, fswatch
 
+var monitor = newMonitor(latency=0.01)
+monitor.add("my-file-path")
 
+proc callback(eg: EventGroup) =
+  for e in eg:
+    echo e.path, " ", $e.kind, " ", e.time.utc()
+
+monitor.setCallback(callback)
+
+# blocks here
+monitor.start()
 ----
 
 ### Contributing
