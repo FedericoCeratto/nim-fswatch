@@ -10,7 +10,7 @@ import
   tables,
   times
 
-import private/libfswatch
+import fswatch/private/libfswatch
 
 export fsw_set_callback # used by the setCallback template
 
