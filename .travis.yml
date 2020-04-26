@@ -1,0 +1,35 @@
+language: c
+dist: bionic
+cache: ccache
+cache:
+  directories:
+  - .cache
+
+matrix:
+  include:
+    - os: linux
+    - os: osx
+  fast_finish: true
+
+addons:
+  # executed on Linux
+  apt:
+    packages:
+      - nim
+      - fswatch
+  # executed on osx
+  homebrew:
+    update: true
+    packages:
+    - nim
+    - fswatch
+
+git:
+  depth: 1
+
+script:
+  - nim c -p:. -r tests/functional.nim
+
+branches:
+  except:
+    - gh-pages
