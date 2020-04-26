@@ -1,0 +1,18 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup homebrew
+      uses: artemnovichkov/action-homebrew@0.1.0
+    - name: Install Nim
+      run: |
+        brew update
+        brew install nim
+    - name: Build project
+      run: |
+        export PATH=$HOME/.nimble/bin:$PATH
+        echo $PATH
+        nim c --hints:off -d:nimDebugDlOpen  -r tests/functional.nim
