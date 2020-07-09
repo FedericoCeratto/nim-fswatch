@@ -14,8 +14,11 @@
 ##  You should have received a copy of the GNU General Public License along with
 ##  this program.  If not, see <http://www.gnu.org/licenses/>.
 
-const libfswatch_fn* = "libfswatch.so(.11)"
+when defined(MacOsX):
+  const libfswatch_fn* = "/usr/local/Cellar/fswatch/1.14.0/lib/libfswatch.11.dylib"
 
+elif defined(Linux):
+  const libfswatch_fn* = "libfswatch.so(.11)"
 {.pragma: fswatch_import, importc, dynlib: libfswatch_fn.}
 
 ##  Status of a library call.

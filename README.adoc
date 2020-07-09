@@ -11,18 +11,31 @@ image:https://img.shields.io/badge/License-GPL%20v3-blue.svg[License]
 
 ### Usage
 
+
+Linux
 [source,bash]
 ----
 sudo apt-get install libfswatch11
 nimble install fswatch
 ----
 
+MacOSX (using brew)
+[source, bash]
+----
+brew install fswatch
+nimble install fswatch
+----
+
+
 [source,nim]
 ----
 import times, fswatch
 
-var monitor = newMonitor(latency=0.01)
-monitor.add("my-file-path")
+var 
+  data = ""
+  monitor = newMonitor(latency=0.01)
+
+monitor.add("/Users/mikebelanger/Dev/Personal/nim_filewatcher/some_file.txt")
 
 proc callback(eg: EventGroup) =
   for e in eg:
