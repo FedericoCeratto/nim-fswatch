@@ -35,7 +35,7 @@ var
   data = ""
   monitor = newMonitor(latency=0.01)
 
-monitor.add("/Users/mikebelanger/Dev/Personal/nim_filewatcher/some_file.txt")
+monitor.add("/path/to/some_file.txt")
 
 proc callback(eg: EventGroup) =
   for e in eg:
@@ -46,6 +46,13 @@ monitor.setCallback(callback)
 # blocks here
 monitor.start()
 ----
+
+Compile and run the above file like
+```
+nim c -r watcher_source.nim
+```
+
+While its running,  make and save some changes to `some_file.txt`.  You should see the output on watcher_source's output update with every file save.  
 
 ### Contributing
 
